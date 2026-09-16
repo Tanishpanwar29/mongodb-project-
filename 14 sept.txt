@@ -1,0 +1,66 @@
+| MySQL    | MongoDB    |
+| -------- | ---------- |
+| Database | Database   |
+| Table    | Collection |
+| Row      | Document   |
+| Column   | Field      |
+
+
+1. DB name creation 
+   use ("Poornima")
+
+2. Collection creation/ tb creation
+   db.createCollection("Student")
+
+3. db.Student.insertOne({
+name : "kajal singh",
+age : 21,
+email : "kajalsingh@gmail.com",
+phone : 6367238812,
+cgpa : 9.5,
+skills : ["c","java","python"]
+address : {city :"Jaipur",
+pincode: 302022,
+state:"rajasthan"
+                    }
+                        })
+
+
+
+
+
+use("Ecommerce")
+
+db.createCollection("products")
+
+db.products.insertOne({
+    productName: "Laptop",
+    category: "Electronics",
+    brand: "HP",
+    price: 65000,
+    rating: 4.5,
+    description: "HP laptop with 16GB RAM and 512GB SSD",
+    features: ["16GB RAM", "Intel i5", "512GBSSD"],
+    seller: {
+        name: "HP Store",
+        city: "Jaipur",
+        state: "Rajasthan"
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
