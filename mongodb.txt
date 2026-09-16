@@ -1,0 +1,375 @@
+use collegeDB;
+
+db.students.drop();
+
+db.students.insertMany([
+  {
+    rollNo: 201,
+    name: "Aarav",
+    age: 20,
+    department: "CSE",
+    marks: 85,
+    skills: ["C", "Python", "MongoDB"],
+    address: { city: "Jaipur", state: "Rajasthan" },
+    scholarship: true
+  },
+  {
+    rollNo: 202,
+    name: "Diya",
+    age: 21,
+    department: "AIDS",
+    marks: 91,
+    skills: ["Python", "SQL", "Power BI"],
+    address: { city: "Delhi", state: "Delhi" },
+    scholarship: true
+  },
+  {
+    rollNo: 203,
+    name: "Kabir",
+    age: 20,
+    department: "IT",
+    marks: 76,
+    skills: ["Java", "HTML", "CSS"],
+    address: { city: "Mumbai", state: "Maharashtra" },
+    scholarship: false
+  },
+  {
+    rollNo: 204,
+    name: "Ananya",
+    age: 22,
+    department: "ECE",
+    marks: 88,
+    skills: ["C++", "Arduino", "IoT"],
+    address: { city: "Pune", state: "Maharashtra" },
+    scholarship: true
+  },
+  {
+    rollNo: 205,
+    name: "Vivaan",
+    age: 21,
+    department: "CSE",
+    marks: 69,
+    skills: ["Python", "JavaScript"],
+    address: { city: "Kota", state: "Rajasthan" },
+    scholarship: false
+  },
+  {
+    rollNo: 206,
+    name: "Ishita",
+    age: 20,
+    department: "AIDS",
+    marks: 95,
+    skills: ["Python", "Machine Learning", "SQL"],
+    address: { city: "Chandigarh", state: "Punjab" },
+    scholarship: true
+  },
+  {
+    rollNo: 207,
+    name: "Rohan",
+    age: 23,
+    department: "ME",
+    marks: 72,
+    skills: ["AutoCAD", "MATLAB"],
+    address: { city: "Surat", state: "Gujarat" },
+    scholarship: false
+  },
+  {
+    rollNo: 208,
+    name: "Meera",
+    age: 21,
+    department: "IT",
+    marks: 81,
+    skills: ["HTML", "CSS", "React"],
+    address: { city: "Bhopal", state: "Madhya Pradesh" },
+    scholarship: true
+  },
+  {
+    rollNo: 209,
+    name: "Aditya",
+    age: 20,
+    department: "CSE",
+    marks: 64,
+    skills: ["C", "C++"],
+    address: { city: "Lucknow", state: "Uttar Pradesh" },
+    scholarship: false
+  },
+  {
+    rollNo: 210,
+    name: "Nisha",
+    age: 22,
+    department: "AIDS",
+    marks: 89,
+    skills: ["Python", "Pandas", "NumPy"],
+    address: { city: "Ajmer", state: "Rajasthan" },
+    scholarship: true
+  },
+  {
+    rollNo: 211,
+    name: "Yash",
+    age: 21,
+    department: "ECE",
+    marks: 74,
+    skills: ["C", "Embedded Systems"],
+    address: { city: "Indore", state: "Madhya Pradesh" },
+    scholarship: false
+  },
+  {
+    rollNo: 212,
+    name: "Saanvi",
+    age: 20,
+    department: "IT",
+    marks: 93,
+    skills: ["Java", "SQL", "MongoDB"],
+    address: { city: "Noida", state: "Uttar Pradesh" },
+    scholarship: true
+  }
+]);
+
+db.products.drop();
+
+for (let i = 1; i <= 50; i++) {
+  db.products.insertOne({
+    productId: i,
+    productName: "Product " + i,
+    category: i % 3 === 0 ? "Electronics" : i % 3 === 1 ? "Clothing" : "Grocery",
+    brand: i % 2 === 0 ? "Brand A" : "Brand B",
+    price: i * 100,
+    stock: i * 2,
+    rating: (i % 5) + 1,
+    inStock: i % 4 !== 0,
+    tags: i % 2 === 0 ? ["new", "popular"] : ["sale", "limited"],
+    seller: {
+      name: "Seller " + i,
+      city: i % 2 === 0 ? "Jaipur" : "Delhi"
+    },
+    createdAt: new Date()
+  });
+}
+
+db.students.find({
+  $and: [
+    { age: { $gt: 20 } },
+    { marks: { $gte: 80 } }
+  ]
+});
+
+db.students.find({
+  $or: [
+    { department: "CSE" },
+    { department: "AIDS" }
+  ]
+});
+
+db.students.find({
+  marks: { $not: { $lt: 80 } }
+});
+
+db.students.find({
+  $nor: [
+    { department: "CSE" },
+    { scholarship: false }
+  ]
+});
+
+db.students.find({ marks: { $eq: 91 } });
+
+db.students.find({ marks: { $gt: 85 } });
+
+db.students.find({ marks: { $lt: 75 } });
+
+db.students.find({ marks: { $gte: 90 } });
+
+db.students.find({ marks: { $lte: 70 } });
+
+db.students.find({ department: { $ne: "CSE" } });
+
+db.students.find({
+  department: { $in: ["CSE", "AIDS"] }
+});
+
+db.students.find({
+  department: { $nin: ["CSE", "AIDS"] }
+});
+
+db.students.find({
+  skills: { $all: ["Python", "SQL"] }
+});
+
+db.students.find({
+  skills: {
+    $elemMatch: {
+      $eq: "MongoDB"
+    }
+  }
+});
+
+db.students.find({
+  skills: { $size: 3 }
+});
+
+db.students.updateOne(
+  { rollNo: 201 },
+  {
+    $set: {
+      subjects: [
+        { name: "DBMS", marks: 85 },
+        { name: "Python", marks: 90 },
+        { name: "AI", marks: 88 }
+      ]
+    }
+  }
+);
+
+db.students.find({
+  subjects: {
+    $elemMatch: {
+      name: "Python",
+      marks: { $gt: 85 }
+    }
+  }
+});
+
+db.students.aggregate([
+  {
+    $project: {
+      _id: 0,
+      name: 1,
+      department: 1,
+      marks: 1
+    }
+  }
+]);
+
+db.students.find(
+  {},
+  {
+    _id: 0,
+    name: 1,
+    marks: 1
+  }
+);
+
+db.students.find(
+  {},
+  {
+    _id: 0,
+    address: 0,
+    scholarship: 0
+  }
+);
+
+db.students.aggregate([
+  {
+    $project: {
+      name: 1,
+      skills: { $slice: ["$skills", 2] }
+    }
+  }
+]);
+
+db.students.find({
+  scholarship: { $exists: true }
+});
+
+db.students.find({
+  marks: { $type: "int" }
+});
+
+db.students.find({
+  name: { $regex: "^A" }
+});
+
+db.students.find();
+
+db.products.find({
+  category: "Electronics"
+});
+
+db.products.find({
+  price: { $gt: 2000 }
+});
+
+db.products.find({
+  rating: { $gte: 4 }
+});
+
+db.products.find({
+  inStock: true
+});
+
+db.products.find({
+  tags: "popular"
+});
+
+db.products.find({
+  "seller.city": "Jaipur"
+});
+
+db.products.updateOne(
+  { productId: 1 },
+  {
+    $set: {
+      price: 1500,
+      rating: 4
+    }
+  }
+);
+
+db.students.updateOne(
+  { rollNo: 201 },
+  {
+    $push: {
+      skills: "Java"
+    }
+  }
+);
+
+db.students.updateOne(
+  { rollNo: 202 },
+  {
+    $addToSet: {
+      skills: "Python"
+    }
+  }
+);
+
+db.products.updateOne(
+  { productId: 2 },
+  {
+    $inc: {
+      stock: 10
+    }
+  }
+);
+
+db.students.updateMany(
+  { department: "CSE" },
+  {
+    $set: {
+      scholarship: true
+    }
+  }
+);
+
+db.products.updateOne(
+  { productId: 3 },
+  {
+    $set: {
+      brand: "Brand C"
+    },
+    $inc: {
+      stock: 5
+    },
+    $push: {
+      tags: "featured"
+    }
+  }
+);
+
+db.students.deleteOne({
+  rollNo: 212
+});
+
+db.products.deleteMany({
+  rating: 1
+});
