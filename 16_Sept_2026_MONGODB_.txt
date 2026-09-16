@@ -1,0 +1,1024 @@
+use("PCEA25AD803")
+    "Electronics",
+const subCategories = {
+    "Electronics": ["Headphones", "Smartwatch", "Camera", "Speaker"],
+    "Mobiles": ["Android", "iPhone", "Feature Phone"],
+    "Laptops": ["Gaming", "Business", "Student"],
+    "Home Appliances": ["Refrigerator", "Washing Machine", "Microwave"],
+    "Fashion": ["Men", "Women", "Kids"],
+    "Books": ["Programming", "Fiction", "Education"],
+    "Sports": ["Cricket", "Football", "Fitness"],
+    "Beauty": ["Skincare", "Haircare", "Makeup"],
+    "Grocery": ["Snacks", "Beverages", "Staples"],
+    "Furniture": ["Chair", "Table", "Sofa"]
+};
+const brands = [
+    "Samsung",
+    "Apple",
+    "Sony",
+    "LG",
+    "HP",
+    "Dell",
+    "Lenovo",
+    "Nike",
+    "Adidas",
+    "Boat",
+    "OnePlus",
+    "AmazonBasics"
+];
+const cities = [
+    "Chennai",
+    "Coimbatore",
+    "Bangalore",
+    "Hyderabad",
+    "Mumbai",
+    "Delhi",
+    "Pune",
+    "Kochi",
+    "Kolkata",
+    "Ahmedabad"
+];
+const states = [
+    "Tamil Nadu",
+    "Karnataka",
+    "Telangana",
+    "Maharashtra",
+    "Delhi",
+    "Kerala",
+    "West Bengal",
+    "Gujarat"
+];
+const paymentMethods = [
+    "UPI",
+    "Credit Card",
+    "Debit Card",
+    "Net Banking",
+    "Cash on Delivery"
+];
+const orderStatuses = [
+    "Shipped",
+    "Processing",
+    "Cancelled",
+    "Returned"
+];
+const sellers = [
+    "RetailHub",
+    "TechWorld",
+    "MegaStore",
+    "DigitalMart",
+    "SmartShop",
+    "PrimeRetail"
+];
+const tags = [
+    "new",
+    "popular",
+    "trending",
+    "premium",
+    "budget",
+    "best-seller",
+    "discount",
+    "limited-stock"
+];
+let documents = [];
+for (let i = 1; i <= 5000; i++) {
+    const category =
+        categories[Math.floor(Math.random() * categories.length)];
+    const subCategory =
+        subCategories[category][
+            Math.floor(Math.random() * subCategories[category].length)
+        ];
+    const brand =
+        brands[Math.floor(Math.random() * brands.length)];
+    const city =
+        cities[Math.floor(Math.random() * cities.length)];
+    const state =
+        states[Math.floor(Math.random() * states.length)];
+    const paymentMethod =
+        paymentMethods[
+            Math.floor(Math.random() * paymentMethods.length)
+        ];
+    const orderStatus =
+        orderStatuses[
+            Math.floor(Math.random() * orderStatuses.length)
+        ];
+    const seller =
+        sellers[
+            Math.floor(Math.random() * sellers.length)
+        ];
+    const quantity =
+        Math.floor(Math.random() * 5) + 1;
+    const price =
+        Math.floor(Math.random() * 95000) + 500;
+    const discount =
+        Math.floor(Math.random() * 51);
+    const discountedPrice =
+        Math.round(
+            price - (price * discount / 100)
+        );
+    const rating =
+        Number(
+            (Math.random() * 4 + 1).toFixed(1)
+        );
+    const stock =
+        Math.floor(Math.random() * 500);
+    const selectedTags = [];
+    for (let j = 0; j < 2; j++) {
+        selectedTags.push(
+            tags[Math.floor(Math.random() * tags.length)]
+        );
+    }
+    const startDate =
+        new Date("2024-01-01").getTime();
+    const endDate =
+        new Date("2026-08-25").getTime();
+    const randomDate =
+        new Date(
+            startDate +
+            Math.random() * (endDate - startDate)
+        );
+    const product = {
+            "PROD" + String(i).padStart(5, "0"),
+            brand + " " + subCategory + " " + i,
+        price: price,
+            discountedPrice * quantity,
+            Math.floor(Math.random() * 5000),
+            stock > 0,
+            name: seller,
+            sellerRating:
+                Number(
+                    (Math.random() * 4 + 1).toFixed(1)
+                )
+        },
+            customerId:
+                "CUS" +
+                String(
+                    Math.floor(Math.random() * 1000) + 1
+                ).padStart(4, "0"),
+            city: city,
+            state: state,
+            age:
+                Math.floor(Math.random() * 50) + 18
+        },
+            method: paymentMethod,
+            transactionId:
+                "TXN" +
+                Math.random()
+                    .toString(36)
+                    .substring(2, 12)
+        },
+            warranty:
+                (Math.floor(Math.random() * 3) + 1) +
+                " years",
+            color: [
+                "Black",
+                "White",
+                "Blue",
+                "Red",
+                "Silver"
+            ][Math.floor(Math.random() * 5)],
+            weight:
+                Number(
+                    (Math.random() * 5 + 0.5).toFixed(2)
+                )
+        },
+            Math.random() > 0.7,
+    };
+    documents.push(product);
+    if (documents.length === 500) {
+        db.aggex.insertMany(documents);
+        documents = [];
+    }
+}
+if (documents.length > 0) {
+    db.aggex.insertMany(documents);
+}
+{
+    $match: {
+    } category: "Electronics"
+  } ])db.aggex.aggregate([
+{
+    $match: {
+    }
+  } ])db.aggex.aggregate([
+{
+    $project: {
+      price: 1.aggregate([
+    }
+  }
+])
+  2 |     $project: {
+  3 |       _id: 0,
+                 ^
+  5 |       price: 1
+  6 |     }
+  7 |   }
+db.aggex.aggregate([
+  {
+    $match: {
+      price: { $gt: 50000 }
+    }
+  }
+])
+[
+  {
+    price: 94713,
+      customerId: 'CUS0974',
+      city: 'Chennai',
+      state: 'Tamil Nadu',
+      age: 26
+    },
+  },
+  {
+    price: 52322,
+  },
+  {
+    price: 73634,
+  },
+  {
+    price: 52271,
+  },
+  {
+    price: 83855,
+  },
+  {
+    price: 62685,
+  },
+  {
+    price: 87735,
+  },
+  {
+    price: 77537,
+      customerId: 'CUS0720',
+      city: 'Ahmedabad',
+      state: 'Karnataka',
+      age: 44
+    },
+  },
+  {
+    price: 84496,
+  },
+  {
+    price: 77328,
+  },
+  {
+    price: 71073,
+  },
+  {
+    price: 66430,
+  },
+  {
+    price: 83538,
+  },
+  {
+    price: 54862,
+      customerId: 'CUS0317',
+      city: 'Bangalore',
+      state: 'Tamil Nadu',
+      age: 67
+    },
+  },
+  {
+    price: 62328,
+  },
+  {
+    price: 79508,
+  },
+  {
+    price: 92650,
+  },
+  {
+    price: 55050,
+  },
+  {
+    price: 78881,
+      customerId: 'CUS0511',
+      city: 'Bangalore',
+      state: 'Karnataka',
+      age: 23
+    },
+  },
+  {
+    price: 78419,
+  }
+]
+db.aggex.aggregate([
+  {
+    $match: {
+    }
+  }
+])
+[
+  {
+    price: 94713,
+      customerId: 'CUS0974',
+      city: 'Chennai',
+      state: 'Tamil Nadu',
+      age: 26
+    },
+  },
+  {
+    price: 52322,
+  },
+  {
+    price: 11462,
+      customerId: 'CUS0517',
+      city: 'Bangalore',
+      state: 'Telangana',
+      age: 37
+    },
+  },
+  {
+    price: 24956,
+  },
+  {
+    price: 69896,
+      customerId: 'CUS0532',
+      city: 'Coimbatore',
+      state: 'Maharashtra',
+      age: 61
+    },
+  },
+  {
+    price: 2320,
+      customerId: 'CUS0989',
+      city: 'Kolkata',
+      state: 'West Bengal',
+      age: 58
+    },
+  },
+  {
+    price: 67280,
+  },
+  {
+    price: 27139,
+      customerId: 'CUS0511',
+      city: 'Chennai',
+      state: 'West Bengal',
+      age: 53
+    },
+  },
+  {
+    price: 65189,
+  },
+  {
+    price: 61519,
+  },
+  {
+    price: 56719,
+      customerId: 'CUS0096',
+      city: 'Mumbai',
+      state: 'West Bengal',
+      age: 25
+    },
+  },
+  {
+    price: 58821,
+      customerId: 'CUS0315',
+      city: 'Hyderabad',
+      state: 'Karnataka',
+      age: 38
+    },
+  },
+  {
+    price: 19667,
+  },
+  {
+    price: 67155,
+  },
+  {
+    price: 63857,
+      customerId: 'CUS0057',
+      city: 'Bangalore',
+      state: 'Telangana',
+      age: 26
+    },
+  },
+  {
+    price: 22422,
+      customerId: 'CUS0001',
+      city: 'Chennai',
+      state: 'Tamil Nadu',
+      age: 28
+    },
+  },
+  {
+    price: 67905,
+      customerId: 'CUS0260',
+      city: 'Coimbatore',
+      state: 'Maharashtra',
+      age: 43
+    },
+  },
+  {
+    price: 44390,
+      customerId: 'CUS0119',
+      city: 'Coimbatore',
+      state: 'Tamil Nadu',
+      age: 64
+    },
+  },
+  {
+    price: 35205,
+  },
+  {
+    price: 46513,
+  }
+]
+db.aggex.aggregate([
+  {
+    $project: {
+      price: 1
+    }
+  }
+])
+[
+  { productName: 'Boat Camera 1', price: 94713 },
+  { productName: 'Adidas Headphones 2', price: 52322 },
+  { productName: 'Sony Headphones 3', price: 11462 },
+  { productName: 'Boat Sofa 4', price: 73634 },
+  { productName: 'Sony Kids 5', price: 24983 },
+  { productName: 'Samsung Student 6', price: 52271 },
+  { productName: 'HP Business 7', price: 29500 },
+  { productName: 'Sony Skincare 8', price: 47197 },
+  { productName: 'OnePlus Beverages 9', price: 83855 },
+  { productName: 'HP Fitness 10', price: 47306 },
+  { productName: 'Sony Women 11', price: 62685 },
+  { productName: 'Boat Smartwatch 12', price: 24956 },
+  { productName: 'Sony Android 13', price: 46043 },
+  { productName: 'Lenovo Cricket 14', price: 87735 },
+  { productName: 'Nike iPhone 15', price: 77537 },
+  { productName: 'Dell Women 16', price: 23338 },
+  { productName: 'Dell iPhone 17', price: 84496 },
+  { productName: 'AmazonBasics Men 18', price: 6821 },
+  { productName: 'Lenovo Fitness 19', price: 77328 },
+  { productName: 'HP Fitness 20', price: 71073 }
+]
+db.aggex.aggregate([
+  {
+    $group: {
+      totalProducts: {
+        $sum: 1
+      },
+      totalQuantity: {
+        $sum: "$quantity"
+      },
+      averagePrice: {
+        $avg: "$price"
+      }
+    }
+  }
+])
+[
+  {
+    totalProducts: 1004,
+    totalQuantity: 3013,
+    averagePrice: 47779.268924302785
+  },
+  {
+    totalProducts: 980,
+    totalQuantity: 2965,
+    averagePrice: 48057.43469387755
+  },
+  {
+    totalProducts: 1046,
+    totalQuantity: 3120,
+    averagePrice: 47733.75525812619
+  },
+  {
+    totalProducts: 1019,
+    totalQuantity: 3124,
+    averagePrice: 47771.21982335623
+  },
+  {
+    totalProducts: 1019,
+    totalQuantity: 2988,
+    averagePrice: 47751.3405299313
+  },
+  {
+    totalProducts: 950,
+    totalQuantity: 2827,
+    averagePrice: 47300.53684210526
+  },
+  {
+    totalProducts: 986,
+    totalQuantity: 2925,
+    averagePrice: 48418.49797160243
+  },
+  {
+    totalProducts: 1020,
+    totalQuantity: 2987,
+    averagePrice: 48065.569607843136
+  },
+  {
+    totalProducts: 998,
+    totalQuantity: 3024,
+    averagePrice: 46952.098196392784
+  },
+  {
+    totalProducts: 978,
+    totalQuantity: 2949,
+    averagePrice: 48776.705521472395
+  }
+]
+db.aggex.aggregate([
+  {
+    $sort: {
+      price: -1
+    }
+  }
+])
+[
+  {
+    price: 95488,
+  },
+  {
+    price: 95486,
+  },
+  {
+    price: 95485,
+      customerId: 'CUS0115',
+      city: 'Hyderabad',
+      state: 'Maharashtra',
+      age: 51
+    },
+  },
+  {
+    price: 95457,
+      customerId: 'CUS0193',
+      city: 'Hyderabad',
+      state: 'Karnataka',
+      age: 66
+    },
+  },
+  {
+    price: 95449,
+  },
+  {
+    price: 95446,
+  },
+  {
+    price: 95432,
+      customerId: 'CUS0555',
+      city: 'Bangalore',
+      state: 'West Bengal',
+      age: 30
+    },
+  },
+  {
+    price: 95426,
+      customerId: 'CUS0890',
+      city: 'Chennai',
+      state: 'West Bengal',
+      age: 36
+    },
+  },
+  {
+    price: 95423,
+  },
+  {
+    price: 95421,
+      customerId: 'CUS0731',
+      city: 'Chennai',
+      state: 'Tamil Nadu',
+      age: 54
+    },
+  },
+  {
+    price: 95405,
+  },
+  {
+    price: 95401,
+  },
+  {
+    price: 95390,
+  },
+  {
+    price: 95384,
+      customerId: 'CUS0694',
+      city: 'Coimbatore',
+      state: 'Gujarat',
+      age: 31
+    },
+  },
+  {
+    price: 95381,
+  },
+  {
+    price: 95378,
+  },
+  {
+    price: 95373,
+      customerId: 'CUS0244',
+      city: 'Hyderabad',
+      state: 'West Bengal',
+      age: 54
+    },
+  },
+  {
+    price: 95371,
+  },
+  {
+    price: 95366,
+      customerId: 'CUS0433',
+      city: 'Ahmedabad',
+      state: 'Karnataka',
+      age: 43
+    },
+  },
+  {
+    price: 95355,
+  }
+]
+db.aggex.aggregate([
+  {
+    $sort: {
+      price: -1
+    }
+  },
+  {
+    $limit: 5
+  }
+])
+[
+  {
+    price: 95488,
+  },
+  {
+    price: 95486,
+  },
+  {
+    price: 95485,
+      customerId: 'CUS0115',
+      city: 'Hyderabad',
+      state: 'Maharashtra',
+      age: 51
+    },
+  },
+  {
+    price: 95457,
+      customerId: 'CUS0193',
+      city: 'Hyderabad',
+      state: 'Karnataka',
+      age: 66
+    },
+  },
+  {
+    price: 95449,
+  }
+]
+db.aggex.aggregate([
+  {
+    $skip: 5
+  }
+])
+[
+  {
+    price: 52271,
+  },
+  {
+    price: 29500,
+      customerId: 'CUS0588',
+      city: 'Bangalore',
+      state: 'West Bengal',
+      age: 66
+    },
+  },
+  {
+    price: 47197,
+  },
+  {
+    price: 83855,
+  },
+  {
+    price: 47306,
+  },
+  {
+    price: 62685,
+  },
+  {
+    price: 24956,
+  },
+  {
+    price: 46043,
+  },
+  {
+    price: 87735,
+  },
+  {
+    price: 77537,
+      customerId: 'CUS0720',
+      city: 'Ahmedabad',
+      state: 'Karnataka',
+      age: 44
+    },
+  },
+  {
+    price: 23338,
+  },
+  {
+    price: 84496,
+  },
+  {
+    price: 6821,
+      customerId: 'CUS0143',
+      city: 'Hyderabad',
+      state: 'West Bengal',
+      age: 34
+    },
+  },
+  {
+    price: 77328,
+  },
+  {
+    price: 71073,
+  },
+  {
+    price: 26899,
+  },
+  {
+    price: 66430,
+  },
+  {
+    price: 83538,
+  },
+  {
+    price: 28217,
+      customerId: 'CUS0442',
+      city: 'Chennai',
+      state: 'Tamil Nadu',
+      age: 35
+    },
+  },
+  {
+    price: 12475,
+      customerId: 'CUS0656',
+      city: 'Chennai',
+      state: 'West Bengal',
+      age: 27
+    },
+  }
+]
+db.aggex.findOne()
+{
+  price: 94713,
+    customerId: 'CUS0974',
+    city: 'Chennai',
+    state: 'Tamil Nadu',
+    age: 26
+  },
+}
+db.aggex.aggregate([
+  {
+    $unwind: "$tags"
+  }
+])
+[
+  {
+    price: 94713,
+      customerId: 'CUS0974',
+      city: 'Chennai',
+      state: 'Tamil Nadu',
+      age: 26
+    },
+  },
+  {
+    price: 94713,
+      customerId: 'CUS0974',
+      city: 'Chennai',
+      state: 'Tamil Nadu',
+      age: 26
+    },
+  },
+  {
+    price: 52322,
+  },
+  {
+    price: 52322,
+  },
+  {
+    price: 11462,
+      customerId: 'CUS0517',
+      city: 'Bangalore',
+      state: 'Telangana',
+      age: 37
+    },
+  },
+  {
+    price: 11462,
+      customerId: 'CUS0517',
+      city: 'Bangalore',
+      state: 'Telangana',
+      age: 37
+    },
+  },
+  {
+    price: 73634,
+  },
+  {
+    price: 73634,
+  },
+  {
+    price: 24983,
+  },
+  {
+    price: 24983,
+  },
+  {
+    price: 52271,
+  },
+  {
+    price: 52271,
+  },
+  {
+    price: 29500,
+      customerId: 'CUS0588',
+      city: 'Bangalore',
+      state: 'West Bengal',
+      age: 66
+    },
+  },
+  {
+    price: 29500,
+      customerId: 'CUS0588',
+      city: 'Bangalore',
+      state: 'West Bengal',
+      age: 66
+    },
+  },
+  {
+    price: 47197,
+  },
+  {
+    price: 47197,
+  },
+  {
+    price: 83855,
+  },
+  {
+    price: 83855,
+  },
+  {
+    price: 47306,
+  },
+  {
+    price: 47306,
+  }
+]
+   customerId: "CUS0974",
+   city: "Chennai"
+  1 | customer: {
+  2 |    customerId: "CUS0974",
+       ^
+  4 |
+}
+  2 |
+   name: "DigitalMart"
+}
+db.customerDetails.insertMany([
+  {
+    customerId: "CUS0974",
+    customerName: "Rahul",
+    membership: "Gold"
+  },
+  {
+    customerId: "CUS0001",
+    customerName: "Anjali",
+    membership: "Silver"
+  },
+  {
+    customerId: "CUS0002",
+    customerName: "Amit",
+    membership: "Platinum"
+  }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6aaa5490c791df3b6061e64a'),
+    '1': ObjectId('6aaa5490c791df3b6061e64b'),
+    '2': ObjectId('6aaa5490c791df3b6061e64c')
+  }
+}
+db.aggex.aggregate([
+  {
+    $lookup: {
+      from: "customerDetails",
+      localField: "customer.customerId",
+      foreignField: "customerId",
+      as: "customerInfo"
+    }
+  }
+])
+[
+  {
+    price: 94713,
+      customerId: 'CUS0974',
+      city: 'Chennai',
+      state: 'Tamil Nadu',
+      age: 26
+    },
+    customerInfo: [
+      {
+        customerId: 'CUS0974',
+        customerName: 'Rahul',
+        membership: 'Gold'
+      }
+    ]
+  },
+  {
+    price: 52322,
+    customerInfo: []
+  },
+  {
+    price: 11462,
+      customerId: 'CUS0517',
+      city: 'Bangalore',
+      state: 'Telangana',
+      age: 37
+    },
+    customerInfo: []
+  },
+  {
+    price: 73634,
+    customerInfo: []
+  },
+  {
+    price: 24983,
+    customerInfo: []
+  },
+  {
+    price: 52271,
+    customerInfo: []
+  },
+  {
+    price: 29500,
+      customerId: 'CUS0588',
+      city: 'Bangalore',
+      state: 'West Bengal',
+      age: 66
+    },
+    customerInfo: []
+  },
+  {
+    price: 47197,
+    customerInfo: []
+  },
+  {
+    price: 83855,
+    customerInfo: []
+  },
+  {
+    price: 47306,
+    customerInfo: []
+  },
+  {
+    price: 62685,
+    customerInfo: []
+  },
+  {
+    price: 24956,
+    customerInfo: []
+  },
+  {
+    price: 46043,
+    customerInfo: []
+  },
+  {
+    price: 87735,
+    customerInfo: []
+  },
+  {
+    price: 77537,
+      customerId: 'CUS0720',
+      city: 'Ahmedabad',
+      state: 'Karnataka',
+      age: 44
+    },
+    customerInfo: []
+  },
+  {
+    price: 23338,
+    customerInfo: []
+  },
+  {
+    price: 84496,
+    customerInfo: []
+  },
+  {
+    price: 6821,
+      customerId: 'CUS0143',
+      city: 'Hyderabad',
+      state: 'West Bengal',
+      age: 34
+    },
+    customerInfo: []
+  },
+  {
+    price: 77328,
+    customerInfo: []
+  },
+  {
+    price: 71073,
+    customerInfo: []
+  }
+]
