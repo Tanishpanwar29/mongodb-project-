@@ -1,9 +1,6 @@
-Microsoft Windows [Version 10.0.26200.9457]
-(c) Microsoft Corporation. All rights reserved.
 
-C:\Users\HP>mongosh "mongodb+srv://cluster0.u5gi0my.mongodb.net/" --apiVersion 1 --username vasanth970399_db_user
-Enter password: ****************
-Current Mongosh Log ID: 6aab707f1302b4034a49df95
+C:\Users\lenovo> mongosh "mongodb+srv://cluster0.u5gi0my.mongodb.net/" --apiVersion 1 --username vasanth970399_db_user --password 3mhM5ejjto8h6rhG
+Current Mongosh Log ID: 6aaa4ff86c5d8cfb445464d8
 Connecting to:          mongodb+srv://<credentials>@cluster0.u5gi0my.mongodb.net/?appName=mongosh+2.10.0
 Using MongoDB:          8.0.32 (API Version 1)
 Using Mongosh:          2.10.0
